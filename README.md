@@ -1,1 +1,1 @@
-# app
+This project provides a template for storing custom code for your BuddyBoss App and activating Blockli custom code. Copy the files into your repo and connect your upgraded repo to your buddyboss app as a starting point for buddyboss custom app development and blockli features. If you already have an existing custom repo, copy the the designated lines of code inside the [index.js] file into your existing index.js file. See our [product documentation](https://blockli.dev/docs/) for additional information.
