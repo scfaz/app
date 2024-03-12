@@ -5,7 +5,7 @@ const { RNCustomCode } = NativeModules;
 import { initialize } from "@blocklienterprise/blockli";
 import config from "@src/build_config.json";
 
-export const applyCustomCode = async (externalCodeSetup) => {
+export const applyCustomCode = externalCodeSetup => {
     const blockli_config = {
       license: "8PSLH4MCQO7P4TP",
       app_id: config.app_id,
@@ -27,7 +27,7 @@ export const applyCustomCode = async (externalCodeSetup) => {
                     <Text style={{ color: 'blue', textDecorationLine: 'underline' }}>Back</Text>
                 </TouchableOpacity>
                 <Text>
-                    To sign up for the the 360 SCD Hub app, please click here.
+                    To sign up for the 360 SCD Hub app, please click here.
                 </Text>
             </View>
         );
