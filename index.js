@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { View, Text, Linking, TouchableOpacity, NativeModules } from "react-native";
+import React from "react";
+import { NativeModules } from "react-native";
+const { RNCustomCode } = NativeModules;
+
 import { initialize } from "@blocklienterprise/blockli";
 import config from "@src/build_config.json";
-
-const { RNCustomCode } = NativeModules;
 
 export const applyCustomCode = async (externalCodeSetup) => {
   const blockli_config = {
@@ -16,36 +16,4 @@ export const applyCustomCode = async (externalCodeSetup) => {
   };
 
   await initialize(blockli_config);
-
-  // call custom code api here
-  // externalCodeSetup.configApi.setAppSwitchEnabled(true);
-
-  externalCodeSetup.navigationApi.replaceScreenComponent("SignupScreen", ({ navigation }) => {
-      useEffect(() => {
-          openLink();
-          navigation.goBack(); // Automatically trigger back navigation
-      }, []); // Run only once when the component is mounted
-
-      return (
-          <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-              <TouchableOpacity onPress={() => navigation.goBack()}>
-                  <Text style={{ color: 'blue', textDecorationLine: 'underline' }}>Back</Text>
-              </TouchableOpacity>
-              <Text>
-                  To sign up for the app, please click here.
-              </Text>
-          </View>
-      );
-  });
-
-  const openLink = () => {
-      const url = "https://360scdhub.org/register/";
-      Linking.openURL(url)
-          .then((supported) => {
-              if (!supported) {
-                  console.error("Opening link in an external browser is not supported");
-              }
-          })
-          .catch((err) => console.error("Error occurred while opening link: ", err));
-  };
 };
